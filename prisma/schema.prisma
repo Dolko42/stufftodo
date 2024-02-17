@@ -56,10 +56,10 @@ model User {
 model Stufflist {
   id        String @id @default(cuid())
   title     String @default("Untitled list")
-  icon      String
+  icon      String?
   author    User @relation(fields: [authorId], references: [id])
   authorId  String
-  tasks     Stuff[] 
+  tasks     Stuff[]
 }
 
 model Stuff {
