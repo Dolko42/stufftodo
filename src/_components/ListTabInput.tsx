@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { db } from "~/server/db";
 
 type FormFields = {
   title: string;
