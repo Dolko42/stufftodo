@@ -17,7 +17,7 @@ const DeleteList: React.FC<DeleteListProps> = ({ currentList }) => {
         className="btn btn-error btn-sm rounded-none text-white"
         type="submit"
       >
-        {pending ? "Deleting..." : "Delete"}
+        {pending ? "Deleting..." : "Delete list"}
       </button>
     );
   }

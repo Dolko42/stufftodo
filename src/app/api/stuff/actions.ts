@@ -21,3 +21,18 @@ export const createStuff = async (formData: FormData) => {
 
   revalidatePath("/todo");
 };
+
+export const deleteStuff = async (formData: FormData) => {
+  const session = await getServerSession(authOptions);
+  const id = formData.get("id") as string;
+
+  if (session && session.user) {
+    await db.stuff.delete({
+      where: {
+        id: id,
+      },
+    });
+  }
+
+  revalidatePath("/todo");
+};
