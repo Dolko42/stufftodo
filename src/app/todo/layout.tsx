@@ -8,7 +8,9 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-row">
       <Sidebar stufflists={stufflists} />
-      <div className="flex flex-col justify-between">{children}</div>
+      <div className="flex flex-col justify-between font-normal md:w-3/4 2xl:w-full">
+        {children}
+      </div>
     </div>
   );
 };

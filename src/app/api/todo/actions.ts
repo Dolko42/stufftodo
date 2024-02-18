@@ -39,6 +39,20 @@ export async function updateStufflist(formData: FormData) {
   } catch {}
 }
 
+export async function deleteStufflist(formData: FormData) {
+  const id = formData.get("id") as string;
+
+  try {
+    await db.stufflist.delete({
+      where: {
+        id: id,
+      },
+    });
+
+    revalidatePath("/todo");
+  } catch {}
+}
+
 // export const deleteStufflist = async () => {
 //   const session = await getServerSession(authOptions);
 

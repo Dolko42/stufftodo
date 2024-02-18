@@ -1,6 +1,6 @@
 import React from "react";
 import { unstable_noStore as noStore } from "next/cache";
-import StuffTab from "~/_components/StuffTab";
+import Board from "~/_components/Board";
 import { db } from "~/server/db";
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <StuffTab currentList={currentList} />
+      <Board currentList={currentList} />
     </>
   );
 }

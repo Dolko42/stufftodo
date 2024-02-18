@@ -6,20 +6,17 @@ const Header: React.FC = async () => {
   const session = await getServerAuthSession();
 
   return (
-    <div className="flex h-12 items-center justify-between bg-white px-4">
+    <div className="flex h-12 items-center justify-between bg-zinc-900 px-4">
       <div className="flex gap-10">
-        <Link href="/" className="font-bold text-gray-900">
+        <Link href="/" className="font-bold text-zinc-200">
           STUFFTODO
-        </Link>
-        <Link href="/todo" className="text-gray-900">
-          Your stuff
         </Link>
       </div>
       <Link href={session ? "/api/auth/signout" : "/api/auth/signin"}>
         <button
           className={
             session
-              ? "btn btn-error btn-sm rounded-none text-white"
+              ? "btn btn-ghost btn-sm rounded-none text-zinc-200"
               : "btn btn-primary btn-sm rounded-none"
           }
         >
