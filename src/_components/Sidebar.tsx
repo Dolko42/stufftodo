@@ -1,10 +1,20 @@
+"use client";
+
 import React from "react";
-import { db } from "~/server/db";
 import Link from "next/link";
 import { createStufflist } from "~/app/api/todo/actions";
+import type { Stufflist } from "~/types";
+import { usePathname } from "next/navigation";
 
-const Sidebar: React.FC = async () => {
-  const stufflists = await db.stufflist.findMany();
+type SidebarProps = {
+  stufflists: Stufflist[];
+};
+
+const Sidebar: React.FC<SidebarProps> = ({ stufflists }) => {
+  const currentPath = usePathname();
+
+  const activeClasses = "mb-2 bg-blue-700 px-8 py-2";
+  const inactiveClasses = "mb-2 bg-gray-600 px-8 py-2 hover:bg-blue-500";
 
   return (
     <div className="w-80">
@@ -12,7 +22,7 @@ const Sidebar: React.FC = async () => {
         <div key={stufflist.id} className="flex flex-col">
           <Link
             href={`/todo/${stufflist.id}`}
-            className="mb-2 bg-blue-700 px-8 py-2"
+            className={`${currentPath === `/todo/${stufflist.id}` ? activeClasses : inactiveClasses}`}
           >
             {stufflist.title}
           </Link>

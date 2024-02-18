@@ -10,7 +10,6 @@ type FormFields = {
 
 const ListTabInput: React.FC = () => {
   // Simulate Stufflist fetch from db
-  // TODO: Fetch Stufflist
   const [placeholder, setPlaceholder] = useState("Untitled list");
 
   const {
@@ -26,13 +25,8 @@ const ListTabInput: React.FC = () => {
     },
   });
 
-  const onSubmit = async (data: FormFields) => {
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    console.log("Data submitted", data);
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-row">
+    <form className="flex flex-row">
       <input
         {...register("title", { required: "At leaast 1 character pls" })}
         type="text"
