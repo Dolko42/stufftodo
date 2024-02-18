@@ -1,18 +1,20 @@
 import React from "react";
+import { unstable_noStore as noStore } from "next/cache";
+import StuffTab from "~/_components/StuffTab";
+import { db } from "~/server/db";
 
-const page: React.FC = () => {
+export default async function Page({ params }: { params: { id: string } }) {
+  noStore();
+
+  const currentList = await db.stufflist.findUnique({
+    where: {
+      id: params.id,
+    },
+  });
+
   return (
     <>
-      <form action="">
-        <input
-          type="text"
-          name="content"
-          placeholder="Got stuff to do?"
-          required
-        ></input>
-        <button>Add stuff</button>
-      </form>
+      <StuffTab currentList={currentList} />
     </>
   );
-};
-export default page;
+}

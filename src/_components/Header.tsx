@@ -6,12 +6,12 @@ const Header: React.FC = async () => {
   const session = await getServerAuthSession();
 
   return (
-    <div className="flex items-center justify-between bg-white px-4 py-2">
+    <div className="flex h-12 items-center justify-between bg-white px-4">
       <div className="flex gap-10">
-        <Link href="/" className="font-bold text-gray-800">
+        <Link href="/" className="font-bold text-gray-900">
           STUFFTODO
         </Link>
-        <Link href="/todo" className="text-gray-800">
+        <Link href="/todo" className="text-gray-900">
           Your stuff
         </Link>
       </div>

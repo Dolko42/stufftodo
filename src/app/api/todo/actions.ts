@@ -3,10 +3,11 @@
 // import type { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 import { authOptions } from "~/server/auth";
 import { db } from "~/server/db";
 
-export const createStufflist = async () => {
+export async function createStufflist() {
   const session = await getServerSession(authOptions);
 
   if (session && session.user) {
@@ -17,8 +18,38 @@ export const createStufflist = async () => {
     });
   }
 
-  revalidatePath("/");
-};
+  revalidatePath("/todo");
+}
+
+export async function updateStufflist(formData: FormData) {
+  const title = formData.get("title") as string;
+  const id = formData.get("id") as string;
+
+  try {
+    await db.stufflist.update({
+      where: {
+        id: id,
+      },
+      data: {
+        title: title,
+      },
+    });
+
+    revalidatePath("/todo");
+  } catch {}
+}
+
+// export const deleteStufflist = async () => {
+//   const session = await getServerSession(authOptions);
+
+//   if (session && session.user) {
+//     await db.stufflist.delete({
+//       where: { id:  }
+//     })
+//   }
+
+//   revalidatePath("/todo");
+// };
 
 // export const getStufflists = async (
 //   req: NextApiRequest,
