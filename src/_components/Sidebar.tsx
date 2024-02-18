@@ -13,8 +13,8 @@ type SidebarProps = {
 const Sidebar: React.FC<SidebarProps> = ({ stufflists }) => {
   const currentPath = usePathname();
 
-  const activeClasses = "mb-2 bg-blue-700 px-8 py-2";
-  const inactiveClasses = "mb-2 bg-gray-600 px-8 py-2 hover:bg-blue-500";
+  const activeClasses = "mb-2 bg-blue-700 px-8 py-2 text-white";
+  const inactiveClasses = "mb-2 bg-gray-600 px-8 py-2 hover:bg-blue-600";
 
   return (
     <div className="w-80">

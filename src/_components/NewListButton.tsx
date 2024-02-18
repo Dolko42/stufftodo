@@ -1,5 +1,5 @@
 import React from "react";
-import { createStufflist } from "../app/stufflist/[id]/actions";
+import { createStufflist } from "~/app/api/todo/actions";
 
 const NewListButton: React.FC = () => {
   return (
