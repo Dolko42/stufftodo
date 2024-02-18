@@ -19,7 +19,7 @@ const Sidebar: React.FC<SidebarProps> = ({ stufflists }) => {
   return (
     <div className="flex max-h-screen flex-col justify-between md:w-1/4 2xl:w-80">
       <form action={createStufflist}>
-        <button className="w-full bg-lime-500 px-8 py-4 text-gray-900">
+        <button className="w-full bg-lime-500 px-8 py-4 font-medium text-zinc-900">
           {`+`} New list
         </button>
       </form>

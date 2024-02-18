@@ -4,8 +4,8 @@ export default async function Todo() {
   noStore();
 
   return (
-    <main>
-      <p>Todo</p>
+    <main className="p-4">
+      <p>Add or select a list.</p>
     </main>
   );
 }
