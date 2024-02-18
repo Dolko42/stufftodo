@@ -7,9 +7,14 @@ const Header: React.FC = async () => {
 
   return (
     <div className="flex items-center justify-between bg-white px-4 py-2">
-      <Link href="/" className="font-bold text-gray-800">
-        LOGO
-      </Link>
+      <div className="flex gap-10">
+        <Link href="/" className="font-bold text-gray-800">
+          STUFFTODO
+        </Link>
+        <Link href="/todo" className="text-gray-800">
+          Your stuff
+        </Link>
+      </div>
       <Link href={session ? "/api/auth/signout" : "/api/auth/signin"}>
         <button
           className={
