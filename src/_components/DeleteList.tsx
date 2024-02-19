@@ -24,7 +24,10 @@ const DeleteList: React.FC<DeleteListProps> = ({ currentList }) => {
 
   return (
     <>
-      <form action={deleteStufflist} className="flex flex-row">
+      <form
+        action={deleteStufflist.bind(null, listId)}
+        className="flex flex-row"
+      >
         <input type="hidden" name="id" required value={listId} />
         <SubmitButton />
       </form>
