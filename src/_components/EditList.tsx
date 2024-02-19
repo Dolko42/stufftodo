@@ -44,7 +44,7 @@ const EditList: React.FC<EditListProps> = ({ currentList }) => {
           placeholder={currentList.title}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          className="border-b border-zinc-400 bg-transparent text-xl text-white hover:bg-zinc-700 focus:border-zinc-300 focus:bg-white focus:text-black focus:outline-none"
+          className="border-b border-zinc-700 bg-transparent text-xl placeholder-white hover:bg-zinc-700 focus:border-zinc-300 focus:bg-white focus:text-black focus:placeholder-black focus:outline-none"
         />
         {isInputFocused && <SubmitButton />}
       </form>

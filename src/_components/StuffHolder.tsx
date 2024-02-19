@@ -12,6 +12,9 @@ const StuffHolder: React.FC<StuffHolderProps> = async ({ currentList }) => {
     where: {
       listId: currentList.id,
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   });
 
   return (

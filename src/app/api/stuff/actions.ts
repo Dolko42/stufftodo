@@ -36,3 +36,23 @@ export const deleteStuff = async (formData: FormData) => {
 
   revalidatePath("/todo");
 };
+
+export const toggleStuff = async (id: string) => {
+  const session = await getServerSession(authOptions);
+  const stuff = await db.stuff.findFirst({
+    where: { id: id },
+  });
+
+  if (session && session.user && stuff) {
+    await db.stuff.update({
+      data: {
+        status: !stuff?.status,
+      },
+      where: {
+        id: stuff.id,
+      },
+    });
+  }
+
+  revalidatePath("/todo");
+};
