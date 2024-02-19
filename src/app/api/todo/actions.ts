@@ -16,10 +16,13 @@ export async function createStufflist() {
           authorId: session?.user.id,
         },
       });
-    } catch {}
-  }
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
 
-  revalidatePath("/todo");
+    revalidatePath("/todo");
+  }
 }
 
 export async function updateStufflist(formData: FormData) {

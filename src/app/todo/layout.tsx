@@ -18,7 +18,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   });
 
   return (
-    <div className="flex h-96 flex-col md:flex-row">
+    <div className="flex min-h-[40rem] flex-col md:flex-row">
       <Sidebar allStufflists={allStufflists} />
       <div className="flex w-full flex-col justify-between font-normal">
         {children}

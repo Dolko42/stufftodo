@@ -9,9 +9,9 @@ export default async function Todo() {
     redirect("/api/auth/signin");
   } else {
     return (
-      <main className="p-4">
-        <p>Add or select a list.</p>
-      </main>
+      <div className="flex h-full flex-col items-center justify-between bg-zinc-800 p-4">
+        <p>Add or select list</p>
+      </div>
     );
   }
 }
