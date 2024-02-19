@@ -1,11 +1,17 @@
-import { unstable_noStore as noStore } from "next/cache";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "~/server/auth";
 
 export default async function Todo() {
-  noStore();
+  const session = await getServerSession(authOptions);
 
-  return (
-    <main className="p-4">
-      <p>Add or select a list.</p>
-    </main>
-  );
+  if (!session || !session.user) {
+    redirect("/api/auth/signin");
+  } else {
+    return (
+      <main className="p-4">
+        <p>Add or select a list.</p>
+      </main>
+    );
+  }
 }

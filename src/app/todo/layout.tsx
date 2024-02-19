@@ -6,7 +6,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   const stufflists = await db.stufflist.findMany();
 
   return (
-    <div className="flex h-96 sm:flex-col md:flex-row">
+    <div className="flex h-96 flex-col md:flex-row">
       <Sidebar stufflists={stufflists} />
       <div className="flex w-full flex-col justify-between font-normal">
         {children}

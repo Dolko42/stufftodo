@@ -17,7 +17,7 @@ const Stuff: React.FC<StuffProps> = ({ stuff }) => {
         </form>
         <p>{stuff.title}</p>
       </div>
-      <form action={deleteStuff}>
+      <form action={deleteStuff.bind(null, stuff.id)}>
         <input type="hidden" name="id" required value={stuffId} />
         <div className="tooltip tooltip-left tooltip-error" data-tip="Delete">
           <button type="submit">🗑️</button>
