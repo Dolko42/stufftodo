@@ -11,7 +11,11 @@ type BoardProps = {
 
 const Board: React.FC<BoardProps> = ({ currentList }) => {
   if (!currentList) {
-    return <div>No list found</div>;
+    return (
+      <div className="flex h-full flex-col items-center justify-between bg-zinc-800 p-4">
+        <p>Add or select list</p>
+      </div>
+    );
   }
 
   return (

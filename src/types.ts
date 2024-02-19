@@ -17,6 +17,15 @@ export type Stuff = {
   creatorId: string;
   listId: string;
 };
+export type StufflistWithCount = {
+  id: string;
+  title: string;
+  icon: string | null;
+  authorId: string;
+  _count: {
+    tasks: number;
+  };
+}[];
 
 export const CreateStuffSchema = z.object({
   id: z.string(),

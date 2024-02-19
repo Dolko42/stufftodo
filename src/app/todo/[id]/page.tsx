@@ -12,9 +12,5 @@ export default async function Page({ params }: { params: { id: string } }) {
     },
   });
 
-  return (
-    <>
-      <Board currentList={currentList} />
-    </>
-  );
+  return <Board currentList={currentList} />;
 }

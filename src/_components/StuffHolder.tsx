@@ -22,7 +22,7 @@ const StuffHolder: React.FC<StuffHolderProps> = async ({ currentList }) => {
 
   return (
     <>
-      <div className="flex flex-col gap-2 py-4">
+      <div className="flex flex-col gap-2 py-8">
         {incompleteItems.map((stuff) => (
           <Stuff key={stuff.id} stuff={stuff} />
         ))}
