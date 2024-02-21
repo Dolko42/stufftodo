@@ -10,7 +10,7 @@ const Stuff: React.FC<StuffProps> = ({ stuff }) => {
   const stuffId = stuff.id.toString();
 
   return (
-    <div className="mb-2 flex flex-row items-center justify-between bg-zinc-700 px-2 py-3">
+    <div className="mb-2 flex flex-row items-center justify-between bg-zinc-700 px-2 py-3 hover:bg-zinc-600">
       <div className="flex gap-2">
         <form action={toggleStuff.bind(null, stuff.id)}>
           <button>{stuff.status ? <p>✅</p> : <p>⬜</p>}</button>
