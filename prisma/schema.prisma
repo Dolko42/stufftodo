@@ -69,6 +69,7 @@ model Stuff {
   status Boolean    @default(false)
   important Boolean @default(false)
   createdAt DateTime @default(dbgenerated("now()"))
+  deadline  DateTime?
 
   creator User @relation(fields: [creatorId], references: [id])
   creatorId String

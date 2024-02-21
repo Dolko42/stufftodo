@@ -3,6 +3,7 @@
 // import type { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { authOptions } from "~/server/auth";
 import { db } from "~/server/db";
 
@@ -61,6 +62,7 @@ export async function deleteStufflist(id: string) {
       });
 
       revalidatePath("/todo");
+      redirect("/todo");
     } catch {}
   }
 }
