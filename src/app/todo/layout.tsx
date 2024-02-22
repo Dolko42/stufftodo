@@ -1,4 +1,3 @@
-import React from "react";
 import Sidebar from "~/_components/Sidebar";
 import { db } from "~/server/db";
 
