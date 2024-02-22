@@ -1,5 +1,5 @@
+import type { Stufflist } from "@prisma/client";
 import { deleteStufflist } from "~/app/api/todo/actions";
-import type { Stufflist } from "~/types";
 
 type DeleteListProps = {
   currentList: Stufflist;

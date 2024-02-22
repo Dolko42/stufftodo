@@ -1,12 +1,12 @@
 "use client";
 
 import EditList from "./EditList";
-import type { Stuff, Stufflist } from "~/types";
 import DeleteList from "./DeleteList";
 import CreateStuff from "./CreateStuff";
 import Search from "./Search";
 import StuffHolder from "./StuffHolder";
 import { useOptimistic } from "react";
+import type { Stuff, Stufflist } from "@prisma/client";
 
 type BoardProps = {
   currentList: Stufflist;

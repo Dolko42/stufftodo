@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createStuff } from "~/app/api/stuff/actions";
-import type { Stuff, Stufflist } from "~/types";
 import { CreateStuffSchema } from "~/types";
 import type { z } from "zod";
+import type { Stuff, Stufflist } from "@prisma/client";
 
 type CreateStuffProps = {
   currentList: Stufflist;
@@ -51,7 +51,7 @@ const CreateStuff: React.FC<CreateStuffProps> = ({
       createdAt: new Date(),
       creatorId: "defaultCreatorId",
       listId: currentList.id,
-      deadline: "",
+      deadline: null,
     };
     addOptimisticStuff(newStuff);
 

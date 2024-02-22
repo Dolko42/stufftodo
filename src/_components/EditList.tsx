@@ -1,8 +1,8 @@
 "use client";
+import type { Stufflist } from "@prisma/client";
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
 import { updateStufflist } from "~/app/api/todo/actions";
-import type { Stufflist } from "~/types";
 
 type EditListProps = {
   currentList: Stufflist;

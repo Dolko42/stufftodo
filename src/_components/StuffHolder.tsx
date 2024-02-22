@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import type { Stuff as StuffType } from "~/types";
 import Stuff from "./Stuff";
 
 type StuffHolderProps = {
-  stuffs: StuffType[];
+  stuffs: Stuff[];
 };
 
 const StuffHolder: React.FC<StuffHolderProps> = ({ stuffs }) => {
