@@ -1,4 +1,3 @@
-"use client";
 import type { Stufflist } from "@prisma/client";
 import { useState } from "react";
 import { useFormStatus } from "react-dom";

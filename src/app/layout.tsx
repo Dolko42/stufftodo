@@ -13,7 +13,7 @@ const inter = Inter({
 export const metadata = {
   title: "Stufftodo - The stuff you gotta do",
   description: "Made by Adam",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "/favicon.png" }],
 };
 
 export default function RootLayout({
