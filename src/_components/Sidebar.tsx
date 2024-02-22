@@ -3,7 +3,8 @@
 import Link from "next/link";
 import type { StufflistWithCount } from "~/types";
 import { usePathname } from "next/navigation";
-import CreateList from "./CreateList";
+import { CreateListButton } from "./ListButtons";
+import { createStufflist } from "~/app/api/todo/actions";
 
 type SidebarProps = {
   allStufflists: StufflistWithCount;
@@ -17,7 +18,9 @@ const Sidebar: React.FC<SidebarProps> = ({ allStufflists }) => {
 
   return (
     <div className="flex max-h-screen flex-col bg-zinc-900 md:w-1/4 2xl:w-80">
-      <CreateList />
+      <form action={createStufflist}>
+        <CreateListButton />
+      </form>
       <div>
         {allStufflists.map((stufflist) => (
           <Link key={stufflist.id} href={`/todo/${stufflist.id}`} className="">

@@ -4,7 +4,7 @@ export default async function Home() {
   noStore();
 
   return (
-    <main className="p-4">
+    <main className="relative flex h-full min-h-[40rem] flex-col bg-zinc-800 p-4">
       <h1 className="pb-4 text-3xl text-white">
         Welcome. You got stuff to do.
       </h1>

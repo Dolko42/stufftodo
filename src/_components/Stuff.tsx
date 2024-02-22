@@ -112,7 +112,7 @@ const Stuff: React.FC<StuffProps> = ({ stuff, isActive, toggleDrawer }) => {
           className="drawer-overlay"
         ></label>
         <ul
-          className={`menu z-50 min-h-full w-96 bg-base-200 p-6 pr-10 text-base-content ${isActive ? "z-50" : "z-10"}`}
+          className={`menu z-50 min-h-full bg-base-200 p-6 pr-10 text-base-content lg:w-96 ${isActive ? "z-50" : "z-10"}`}
         >
           {/* Sidebar content here */}
           <p className="text-xl text-white">{`Edit stuff - ${stuff.title}`}</p>

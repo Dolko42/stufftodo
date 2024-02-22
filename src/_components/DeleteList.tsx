@@ -1,5 +1,6 @@
 import type { Stufflist } from "@prisma/client";
 import { deleteStufflist } from "~/app/api/todo/actions";
+import { DeleteListButton } from "./ListButtons";
 
 type DeleteListProps = {
   currentList: Stufflist;
@@ -8,17 +9,6 @@ type DeleteListProps = {
 const DeleteList: React.FC<DeleteListProps> = ({ currentList }) => {
   const listId = currentList.id.toString();
 
-  function SubmitButton() {
-    return (
-      <button
-        className="btn btn-error btn-sm rounded-none text-white"
-        type="submit"
-      >
-        Delete list
-      </button>
-    );
-  }
-
   return (
     <>
       <form
@@ -26,7 +16,7 @@ const DeleteList: React.FC<DeleteListProps> = ({ currentList }) => {
         className="flex flex-row"
       >
         <input type="hidden" name="id" required value={listId} />
-        <SubmitButton />
+        <DeleteListButton />
       </form>
     </>
   );
