@@ -1,20 +1,25 @@
 "use client";
+
 import { useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createStuff } from "~/app/api/stuff/actions";
-import type { Stufflist } from "~/types";
+import type { Stuff, Stufflist } from "~/types";
 import { CreateStuffSchema } from "~/types";
 import type { z } from "zod";
 
 type CreateStuffProps = {
   currentList: Stufflist;
+  addOptimisticStuff: (action: Stuff) => void;
 };
 
 type Inputs = z.infer<typeof CreateStuffSchema>;
 
-const CreateStuff: React.FC<CreateStuffProps> = ({ currentList }) => {
+const CreateStuff: React.FC<CreateStuffProps> = ({
+  currentList,
+  addOptimisticStuff,
+}) => {
   const listId = currentList.id.toString();
   const { pending } = useFormStatus();
   const {
@@ -39,6 +44,18 @@ const CreateStuff: React.FC<CreateStuffProps> = ({ currentList }) => {
   }
 
   const processForm: SubmitHandler<Inputs> = async (data) => {
+    const newStuff: Stuff = {
+      id: data.id,
+      title: data.content,
+      description: "",
+      status: false,
+      important: false,
+      createdAt: new Date(),
+      creatorId: "defaultCreatorId",
+      listId: currentList.id,
+    };
+    addOptimisticStuff(newStuff);
+
     await createStuff(data).then(() => reset());
   };
 

@@ -22,5 +22,28 @@ export default async function Page({
     },
   });
 
-  return <Board query={query} currentList={currentList} />;
+  if (!currentList) {
+    return (
+      <div className="flex h-full flex-col items-center justify-between bg-zinc-800 p-4">
+        <p>Add or select list</p>
+      </div>
+    );
+  }
+
+  const stuffs = await db.stuff.findMany({
+    where: {
+      listId: currentList.id,
+      ...(query && {
+        title: {
+          contains: query,
+          mode: "insensitive",
+        },
+      }),
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  return <Board currentList={currentList} stuffs={stuffs} />;
 }
