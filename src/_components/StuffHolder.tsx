@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import type { Stuff as StuffType } from "~/types";
 import Stuff from "./Stuff";
 
-type EditStuffDrawerProps = {
+type StuffHolderProps = {
   stuffs: StuffType[];
 };
 
-const EditStuffDrawer: React.FC<EditStuffDrawerProps> = ({ stuffs }) => {
+const StuffHolder: React.FC<StuffHolderProps> = ({ stuffs }) => {
   const [activeDrawer, setActiveDrawer] = useState<string | null>(null);
 
   const toggleDrawer = (id: string) => {
@@ -57,4 +57,4 @@ const EditStuffDrawer: React.FC<EditStuffDrawerProps> = ({ stuffs }) => {
     </>
   );
 };
-export default EditStuffDrawer;
+export default StuffHolder;

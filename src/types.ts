@@ -16,6 +16,7 @@ export type Stuff = {
   createdAt: Date;
   creatorId: string;
   listId: string;
+  deadline: string;
 };
 export type StufflistWithCount = {
   id: string;
@@ -33,4 +34,22 @@ export const CreateStuffSchema = z.object({
     .string()
     .min(1, "You gotta type something")
     .max(100, "Keep it a 100 cowboy"),
+});
+
+export const EditStuffSchema = z.object({
+  id: z.string(),
+  title: z
+    .string()
+    .min(1, "At leaast 1 character")
+    .max(100, "Keep it a 100 cowboy"),
+  description: z.string().max(200, "200 max").optional(),
+  deadline: z
+    .string()
+    .optional()
+    .refine(
+      (val) => val === undefined || val === "" || !isNaN(Date.parse(val)),
+      {
+        message: "Invalid date format",
+      },
+    ),
 });

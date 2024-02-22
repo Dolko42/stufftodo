@@ -61,3 +61,43 @@ export const toggleStuff = async (id: string) => {
 
   revalidatePath("/todo");
 };
+
+export const editStuff = async (
+  id: string,
+  title: string,
+  description: string | undefined,
+  deadline: string | null | undefined,
+) => {
+  const session = await getServerSession(authOptions);
+  const stuff = await db.stuff.findFirst({
+    where: { id: id },
+  });
+
+  if (session && session.user && stuff) {
+    const updatePayload: {
+      title: string;
+      description?: string;
+      deadline?: Date | null;
+    } = {
+      title,
+    };
+
+    if (description !== undefined && description !== null) {
+      updatePayload.description = description;
+    }
+
+    // Check if deadline is not undefined and not null
+    if (deadline !== undefined && deadline !== null) {
+      updatePayload.deadline = deadline ? new Date(deadline) : null;
+    }
+
+    await db.stuff.update({
+      data: updatePayload,
+      where: {
+        id: stuff.id,
+      },
+    });
+  }
+
+  revalidatePath("/todo");
+};

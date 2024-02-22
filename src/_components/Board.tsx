@@ -5,7 +5,7 @@ import type { Stuff, Stufflist } from "~/types";
 import DeleteList from "./DeleteList";
 import CreateStuff from "./CreateStuff";
 import Search from "./Search";
-import EditStuffDrawer from "./EditStuffDrawer";
+import StuffHolder from "./StuffHolder";
 import { useOptimistic } from "react";
 
 type BoardProps = {
@@ -29,7 +29,7 @@ const Board: React.FC<BoardProps> = ({ currentList, stuffs }) => {
           <EditList currentList={currentList} />
           <DeleteList currentList={currentList} />
         </div>
-        <EditStuffDrawer stuffs={optimisticStuff} />
+        <StuffHolder stuffs={optimisticStuff} />
       </div>
       <div>
         <CreateStuff

@@ -1,6 +1,5 @@
 "use client";
 
-import { useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,7 +20,6 @@ const CreateStuff: React.FC<CreateStuffProps> = ({
   addOptimisticStuff,
 }) => {
   const listId = currentList.id.toString();
-  const { pending } = useFormStatus();
   const {
     register,
     handleSubmit,
@@ -38,7 +36,7 @@ const CreateStuff: React.FC<CreateStuffProps> = ({
   function SubmitButton() {
     return (
       <button className="btn btn-primary rounded-none text-white" type="submit">
-        {pending ? "Adding..." : "Add stuff"}
+        Add stuff
       </button>
     );
   }
@@ -53,6 +51,7 @@ const CreateStuff: React.FC<CreateStuffProps> = ({
       createdAt: new Date(),
       creatorId: "defaultCreatorId",
       listId: currentList.id,
+      deadline: "",
     };
     addOptimisticStuff(newStuff);
 
@@ -66,7 +65,7 @@ const CreateStuff: React.FC<CreateStuffProps> = ({
           className="tooltip tooltip-top tooltip-warning w-full"
           data-tip={errors.content.message}
         >
-          <input type="hidden" {...register("id")} />
+          <input type="hidden" {...register("id", { required: true })} />
           <input
             {...register("content")}
             placeholder="Got stuff to do?"
