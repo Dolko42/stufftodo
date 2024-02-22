@@ -2,6 +2,8 @@ import React from "react";
 import { unstable_noStore as noStore } from "next/cache";
 import Board from "~/_components/Board";
 import { db } from "~/server/db";
+import { authOptions } from "~/server/auth";
+import { getServerSession } from "next-auth/next";
 
 export default async function Page({
   params,
@@ -14,10 +16,12 @@ export default async function Page({
   };
 }) {
   noStore();
-
+  const session = await getServerSession(authOptions);
   const query = searchParams?.query ?? "";
+
   const currentList = await db.stufflist.findUnique({
     where: {
+      authorId: session?.user.id,
       id: params.id,
     },
   });
@@ -32,6 +36,7 @@ export default async function Page({
 
   const stuffs = await db.stuff.findMany({
     where: {
+      creatorId: session?.user.id,
       listId: currentList.id,
       ...(query && {
         title: {
