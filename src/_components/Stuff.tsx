@@ -3,7 +3,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Stuff } from "@prisma/client";
 import React from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import type { SubmitHandler } from "react-hook-form";
 import type { z } from "zod";
 import { deleteStuff, editStuff, toggleStuff } from "~/app/api/stuff/actions";
 import { EditStuffSchema } from "~/types";
